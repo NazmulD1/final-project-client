@@ -18,7 +18,7 @@ class NewCampusContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      campusID: null, 
+      campusId: null, 
       name: "", 
       address: "", 
       description: "",
@@ -42,7 +42,7 @@ class NewCampusContainer extends Component {
         name: this.state.name,
         address: this.state.address,
         description: this.state.description,
-        campusID: this.state.campusId
+        campusId: this.state.campusId
 
     };
     
@@ -54,7 +54,7 @@ class NewCampusContainer extends Component {
       name: "", 
       address: "", 
       description: "", 
-      campusID: null, 
+      campusId: null, 
       redirect: true, 
       redirectId: newCampus.id
     });

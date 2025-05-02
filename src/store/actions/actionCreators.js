@@ -51,6 +51,13 @@ export const deleteStudent = (studentId) => {
 };
 
 
+export const deleteCampus = (campusId) => {
+  return {
+    type: at.DELETE_CAMPUS,  
+    payload: campusId,
+  };
+};
+
 export const editStudent = (student) => {
   return {
     type: at.EDIT_STUDENT,
