@@ -15,7 +15,7 @@ const AllStudentsView = (props) => {
       <p style={{ fontSize: '30px' }}>There are no students.</p>
 
       <Link to={`newstudent`}>
-        <button>Add New Student</button>
+        <button style={{ fontSize: '20px' }}>Add New Student</button>
       </Link>
     </div>
     );
