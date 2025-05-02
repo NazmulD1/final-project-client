@@ -12,7 +12,8 @@ const AllStudentsView = (props) => {
   if (!students.length) {
     return (
     <div>
-      <p>There are no students.</p>
+      <p style={{ fontSize: '30px' }}>There are no students.</p>
+
       <Link to={`newstudent`}>
         <button>Add New Student</button>
       </Link>

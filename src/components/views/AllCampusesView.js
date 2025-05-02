@@ -10,12 +10,16 @@ import { Link } from "react-router-dom";
 const AllCampusesView = (props) => {
   // If there is no campus, display a message.
   if (!props.allCampuses.length) {
-    return <div>There are no campuses.
-      <Link to={`newcampus`}>
-        <button>Add New Campus</button>
-      </Link>
-    </div>;
+    return (
+      <div>
+        <p style={{ fontSize: '30px' }}>There are no campuses.</p>
+        <Link to={`newcampus`}>
+          <button style={{ fontSize: '20px' }}>Add New Campus</button>
+        </Link>
+      </div>
+    );
   }
+  
 
   // If there is at least one campus, render All Campuses view 
   return (

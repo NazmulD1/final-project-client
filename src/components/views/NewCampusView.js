@@ -52,7 +52,7 @@ const NewCampusView = (props) => {
           </div>
           <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
             <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus ID: </label>
-            <input type="text" name="id" onChange ={(e) => handleChange(e)} />
+            <input type="text" name="campusID" onChange ={(e) => handleChange(e)} />
             <br/>
             <br/>
 
