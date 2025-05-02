@@ -5,6 +5,13 @@ import * as at from './actionTypes';
  * for each action type
  */
 
+
+// Add Campus
+export const addCampus = (campus) => ({
+  type: 'ADD_CAMPUS',
+  payload: campus,
+});
+
 // All Campuses
 export const fetchAllCampuses = (campuses) => {
   return {
