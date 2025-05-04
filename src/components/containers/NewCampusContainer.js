@@ -22,6 +22,7 @@ class NewCampusContainer extends Component {
       name: "", 
       address: "", 
       description: "",
+      url: "",
       redirect: false, 
       redirectId: null
     };
@@ -42,6 +43,7 @@ class NewCampusContainer extends Component {
         name: this.state.name,
         address: this.state.address,
         description: this.state.description,
+        url: this.state.url,
         campusId: this.state.campusId
 
     };
@@ -54,6 +56,7 @@ class NewCampusContainer extends Component {
       name: "", 
       address: "", 
       description: "", 
+      url: "",
       campusId: null, 
       redirect: true, 
       redirectId: newCampus.id
