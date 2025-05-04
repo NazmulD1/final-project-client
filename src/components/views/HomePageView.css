@@ -19,5 +19,39 @@
   .student-section {
     background-color: #d1f7fa; /* Light purple for students */
   }
+
+
+
+  button[name="studentButton"] {
+    background-color: #20b2aa; /* LightSeaGreen */
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px; 
+  }
   
- 
+  button[name="studentButton"]:hover {
+    background-color: #17928c;
+  }
+  
+  button[name="campusButton"] {
+    background-color: #64b2d7; /* LightSeaGreen */
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px; 
+
+  }
+  
+  button[name="campusButton"]:hover {
+    background-color: #4a819b;
+  }
+  
