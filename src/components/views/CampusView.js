@@ -32,6 +32,13 @@ const CampusView = (props) => {
       <p>{campus.address}</p>
       <p>{campus.description}</p>      
 
+
+        <img 
+          src={campus.url} 
+          alt={campus.name} 
+        />
+      
+
       <button onClick={() => deleteCampus(campus.id)}>Delete</button> 
 
       {campus.students.map( student => {
