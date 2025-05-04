@@ -1,0 +1,23 @@
+.home-page {
+    display: flex;
+    padding: 20px;
+    gap: 20px;  
+
+  }
+  
+  .campus-section,
+  .student-section {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .campus-section {
+    background-color: #b7dbfe; /* Light blue for campuses */
+  }
+  
+  .student-section {
+    background-color: #d1f7fa; /* Light purple for students */
+  }
+  
+ 
