@@ -13,6 +13,14 @@ const CampusView = (props) => {
   if (campus.students.length === 0) {
     return (
       <div>
+      <h1>{campus.name}</h1>
+      <h1>{campus.id}</h1>
+
+      <img 
+        src={campus.url} 
+        alt={campus.name} 
+      />
+      
         <p style={{ fontSize: '30px' }}>There are no students attending this school.</p>
         <Link to={`newstudent`}>
           <button style={{ fontSize: '20px' }}>Add New Student</button>
@@ -30,7 +38,15 @@ const CampusView = (props) => {
     <div>
       <h1>{campus.name}</h1>
       <p>{campus.address}</p>
+      <p>{campus.id}</p>
       <p>{campus.description}</p>      
+
+
+      <img 
+        src={campus.url} 
+        alt={campus.name} 
+      />
+      
 
       <button onClick={() => deleteCampus(campus.id)}>Delete</button> 
 

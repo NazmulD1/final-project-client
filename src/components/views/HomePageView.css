@@ -13,17 +13,17 @@
   }
   
   .campus-section {
-    background-color: #b7dbfe; /* Light blue for campuses */
+    background-color: #b7dbfe; 
   }
   
   .student-section {
-    background-color: #d1f7fa; /* Light purple for students */
+    background-color: #d1f7fa;
   }
 
 
 
   button[name="studentButton"] {
-    background-color: #20b2aa; /* LightSeaGreen */
+    background-color: #20b2aa; 
     color: white;
     border: none;
     padding: 12px;
@@ -39,7 +39,7 @@
   }
   
   button[name="campusButton"] {
-    background-color: #64b2d7; /* LightSeaGreen */
+    background-color: #64b2d7; 
     color: white;
     border: none;
     padding: 12px;
