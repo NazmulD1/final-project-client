@@ -61,7 +61,10 @@ class EditCampusContainer extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchCampus(this.props.match.params.id);
+    const campusId = this.props.match.params.id;
+    if (campusId) {
+      this.props.fetchCampus(campusId);
+    }
   }
 
   // Unmount when the component is being removed from the DOM:
@@ -71,10 +74,16 @@ class EditCampusContainer extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.props.fetchCampus(this.props.match.params.id);
+      const campusId = this.props.match.params.id;
+      if (campusId) {
+        this.props.fetchCampus(campusId);
+      }
     }
 
-    if (prevProps.campus.id !== this.props.campus.id && this.props.campus.id) {
+    if (
+      (prevProps.campus.id !== this.props.campus.id && this.props.campus.id) ||
+      (this.state.campusId === null && this.props.campus.id)
+    ) {
       this.setState({
         campusId: this.props.campus.id,
         name: this.props.campus.name || "",
