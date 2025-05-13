@@ -8,27 +8,26 @@ import { Link } from "react-router-dom";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus, deleteCampus} = props;
+  const { campus, deleteCampus } = props;
 
   if (campus.students.length === 0) {
     return (
       <div>
-      <h1>{campus.name}</h1>
-      <h1>{campus.id}</h1>
+        <h1>{campus.name}</h1>
+        <h1>{campus.id}</h1>
 
-      <img 
-        src={campus.url} 
-        alt={campus.name} 
-      />
-      
-        <p style={{ fontSize: '30px' }}>There are no students attending this school.</p>
+        <img src={campus.url} alt={campus.name} />
+
+        <p style={{ fontSize: "30px" }}>
+          There are no students attending this school.
+        </p>
         <Link to={`newstudent`}>
-          <button style={{ fontSize: '20px' }}>Add New Student</button>
+          <button style={{ fontSize: "20px" }}>Add New Student</button>
         </Link>
-
+        <Link to={`/campus/${campus.id}/edit`}>
+          <button>Edit</button>
+        </Link>
         <button onClick={() => deleteCampus(campus.id)}>Delete</button>
-
-
       </div>
     );
   }
@@ -39,29 +38,25 @@ const CampusView = (props) => {
       <h1>{campus.name}</h1>
       <p>{campus.address}</p>
       <p>{campus.id}</p>
-      <p>{campus.description}</p>      
+      <p>{campus.description}</p>
 
+      <img src={campus.imageUrl} alt={campus.name} />
 
-      <img 
-        src={campus.url} 
-        alt={campus.name} 
-      />
-      
+      <button onClick={() => deleteCampus(campus.id)}>Delete</button>
+      <Link to={`/campus/${campus.id}/edit`}>
+        <button>Edit</button>
+      </Link>
 
-      <button onClick={() => deleteCampus(campus.id)}>Delete</button> 
-
-      {campus.students.map( student => {
-
+      {campus.students.map((student) => {
         let name = student.firstname + " " + student.lastname;
         return (
           <div key={student.id}>
             <Link to={`/student/${student.id}`}>
               <h2>{name}</h2>
-            </Link>             
+            </Link>
           </div>
         );
       })}
-
     </div>
   );
 };
