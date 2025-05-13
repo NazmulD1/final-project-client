@@ -1,8 +1,6 @@
 /*==================================================
-NewCampusView.js
+EditCampusView.js
 
-The Views component is responsible for rendering web page with data provided by the corresponding Container component.
-It constructs a React component to display the new campus page.
 ================================================== */
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -37,9 +35,7 @@ const useStyles = makeStyles(() => ({
 const EditCampusView = (props) => {
   const { handleChange, handleSubmit, values } = props;
   const classes = useStyles();
-
-  console.log(values);
-
+  
   // Render a New Campus view with an input form
   return (
     <div>
@@ -99,7 +95,7 @@ const EditCampusView = (props) => {
               value={values["imageUrl"]}
               placeholder="Optional"
               onChange={(e) => handleChange(e)}
-              optional
+              optional="true"
             />
             <br />
             <br />
