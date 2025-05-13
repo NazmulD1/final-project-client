@@ -1,9 +1,6 @@
 /*==================================================
-NewCampusContainer.js
+EditCampusContainer.js
 
-The Container component is responsible for stateful logic and data fetching, and
-passes data (if any) as props to the corresponding View component.
-If needed, it also defines the component's "connect" function.
 ================================================== */
 import Header from "./Header";
 import { Component } from "react";
@@ -17,15 +14,15 @@ class EditCampusContainer extends Component {
   // Initialize state
   constructor(props) {
     super(props);
-    this.props.fetchCampus(this.props.match.params.id);
     this.state = {
-      campusId: this.props.campus.id,
-      name: this.props.campus.name,
-      address: this.props.campus.address,
-      description: this.props.campus.description,
-      imageUrl: this.props.campus.imageUrl,
+      campusId: null,
+      name: "",
+      address: "",
+      description: "",
+      imageUrl: "",
       redirect: false,
-      redirectId: this.props.campus.id,
+      redirectId: null,
+      isLoading: true,
     };
   }
 
@@ -63,12 +60,20 @@ class EditCampusContainer extends Component {
     });
   };
 
+  componentDidMount() {
+    this.props.fetchCampus(this.props.match.params.id);
+  }
+
   // Unmount when the component is being removed from the DOM:
   componentWillUnmount() {
     this.setState({ redirect: false, redirectId: null });
   }
 
   componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.props.fetchCampus(this.props.match.params.id);
+    }
+
     if (prevProps.campus.id !== this.props.campus.id && this.props.campus.id) {
       this.setState({
         campusId: this.props.campus.id,
