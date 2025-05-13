@@ -20,24 +20,26 @@ import { Link } from "react-router-dom";
 const StudentView = (props) => {
   const { student } = props;
 
-  // Render a single Student view 
+  // Render a single Student view
   return (
     <div>
       <h1>{student.firstname + " " + student.lastname}</h1>
 
-      <Link to={`/campus/${student.campus.id}`}> <h2>{student.campus.name}</h2> </Link>
-          
+      <Link to={`/campus/${student.campus.id}`}>
+        {" "}
+        <h2>{student.campus.name}</h2>{" "}
+      </Link>
+
+      <Link to={`/student/${student.id}/edit`}>
+        <button>Edit</button>
+      </Link>
+
       <h3>GPA: {student.gpa}</h3>
       <h3>{student.email}</h3>
 
-      <img 
-          src={student.url} 
-          alt={student.name} 
-        />
-
+      <img src={student.url} alt={student.name} />
     </div>
   );
-
 };
 
 export default StudentView;

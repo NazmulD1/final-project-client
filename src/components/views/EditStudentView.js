@@ -1,5 +1,5 @@
 /*==================================================
-EditCampusView.js
+EditStudentView.js
 
 ================================================== */
 import Button from "@material-ui/core/Button";
@@ -32,14 +32,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const EditCampusView = (props) => {
+const EditStudentView = (props) => {
   const { handleChange, handleSubmit, values } = props;
   const classes = useStyles();
-  
-  // Render a New Campus view with an input form
+
+  // Render a New Student view with an input form
   return (
     <div>
-      <h1>Edit Campus</h1>
+      <h1>Edit Student</h1>
 
       <div className={classes.root}>
         <div className={classes.formContainer}>
@@ -52,7 +52,7 @@ const EditCampusView = (props) => {
                 color: "#11153e",
               }}
             >
-              Edit Campus
+              Edit Student
             </Typography>
           </div>
           <form
@@ -60,12 +60,12 @@ const EditCampusView = (props) => {
             onSubmit={(e) => handleSubmit(e)}
           >
             <label style={{ color: "#11153e", fontWeight: "bold" }}>
-              Campus Name:{" "}
+              First Name:{" "}
             </label>
             <input
               type="text"
-              name="name"
-              value={values["name"]}
+              name="firstname"
+              value={values["firstname"]}
               onChange={(e) => handleChange(e)}
               required
             />
@@ -73,13 +73,25 @@ const EditCampusView = (props) => {
             <br />
 
             <label style={{ color: "#11153e", fontWeight: "bold" }}>
-              {" "}
-              Address:{" "}
+              Last Name:{" "}
             </label>
             <input
               type="text"
-              name="address"
-              value={values["address"]}
+              name="lastname"
+              value={values["lastname"]}
+              onChange={(e) => handleChange(e)}
+              required
+            />
+            <br />
+            <br />
+
+            <label style={{ color: "#11153e", fontWeight: "bold" }}>
+              Email:{" "}
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={values["email"]}
               onChange={(e) => handleChange(e)}
               required
             />
@@ -101,16 +113,32 @@ const EditCampusView = (props) => {
             <br />
 
             <label style={{ color: "#11153e", fontWeight: "bold" }}>
-              {" "}
-              Description:{" "}
+              GPA:{" "}
             </label>
             <input
-              type="text"
-              name="description"
-              value={values["description"]}
+              type="number"
+              name="gpa"
+              value={values["gpa"]}
+              step="0.01"
+              min="0"
+              max="4"
               onChange={(e) => handleChange(e)}
               required
             />
+            <br />
+            <br />
+
+            <label style={{ color: "#11153e", fontWeight: "bold" }}>
+              Campus Id:{" "}
+            </label>
+            <input
+              type="number"
+              name="campusId"
+              value={values["campusId"]}
+              onChange={(e) => handleChange(e)}
+              required
+            />
+
             <br />
             <br />
 
@@ -126,4 +154,4 @@ const EditCampusView = (props) => {
   );
 };
 
-export default EditCampusView;
+export default EditStudentView;
