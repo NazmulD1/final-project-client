@@ -18,7 +18,7 @@ class EditStudentContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
+      id: null,
       campusId: "",
       firstname: "",
       lastname: "",
@@ -31,17 +31,24 @@ class EditStudentContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchStudent(this.props.match.params.id);
+    const id = this.props.match.params.id;
+    if (id) {
+      this.props.fetchStudent(id);
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.props.fetchStudent(this.props.match.params.id);
+      const id = this.props.match.params.id;
+      if (id) {
+        this.props.fetchStudent(id);
+      }
     }
 
     if (
-      prevProps.student.id !== this.props.student.id &&
-      this.props.student.id
+      (prevProps.student.id !== this.props.student.id &&
+        this.props.student.id) ||
+      (this.state.id === null && this.props.student.id)
     ) {
       this.setState({
         id: this.props.student.id,
