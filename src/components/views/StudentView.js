@@ -18,7 +18,7 @@ is enrolled (if exists)
 import { Link } from "react-router-dom";
 
 const StudentView = (props) => {
-  const { student } = props;
+  const { student, deleteStudent } = props;
 
   // Render a single Student view. Below, guard against the case when the student is not enrolled in a campus.
   return (
@@ -36,6 +36,8 @@ const StudentView = (props) => {
       <Link to={`/student/${student.id}/edit`}>
         <button>Edit</button>
       </Link>
+
+      <button onClick={() => deleteStudent(student.id)}>Delete</button>
 
       <h3>GPA: {student.gpa}</h3>
       <h3>{student.email}</h3>
