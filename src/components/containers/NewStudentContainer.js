@@ -25,9 +25,11 @@ class NewStudentContainer extends Component {
       gpa: "", 
       campusId: null, 
       redirect: false, 
-      redirectId: null
+      redirectId: null,
+      error: null
     };
   }
+
 
   // Capture input data when it is entered
   handleChange = event => {
@@ -49,20 +51,30 @@ class NewStudentContainer extends Component {
         campusId: this.state.campusId
     };
     
-    // Add new student in back-end database
-    let newStudent = await this.props.addStudent(student);
 
-    // Update state, and trigger redirect to show the new student
-    this.setState({
-      firstname: "", 
-      lastname: "", 
-      email: "", 
-      imageUrl: "", 
-      gpa: "", 
-      campusId: null, 
-      redirect: true, 
-      redirectId: newStudent.id
-    });
+    try {
+    const newStudent = await this.props.addStudent(student);
+
+      if (newStudent) {
+        // reset form & redirect
+        this.setState({
+          firstname: "", 
+          lastname: "", 
+          email: "", 
+          imageUrl: "", 
+          gpa: "", 
+          campusId: "",  // string is better for input field
+          redirect: true, 
+          redirectId: newStudent.id,
+          error: null
+        });
+      } else {
+        this.setState({ error: "Student creation failed. Check campus ID." });
+      }
+    } catch (err) {
+      this.setState({ error: "Error adding student. Please enter a valid Campus ID." });
+    }
+
   }
 
   // Unmount when the component is being removed from the DOM:

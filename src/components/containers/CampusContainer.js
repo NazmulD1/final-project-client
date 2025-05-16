@@ -11,26 +11,43 @@ import { connect } from "react-redux";
 import { fetchCampusThunk, deleteCampusThunk } from "../../store/thunks";
 
 import { CampusView } from "../views";
+import { Redirect } from "react-router-dom";
+
 
 class CampusContainer extends Component {
+  state = {
+    redirect: false,
+  };
+
   // Get the specific campus data from back-end database
   componentDidMount() {
     // Get campus ID from URL (API link)
     this.props.fetchCampus(this.props.match.params.id);
   }
 
+  handleDelete = async (id) => {
+    await this.props.deleteCampus(id);
+    this.setState({ redirect: true });
+  };
+
   // Render a Campus view by passing campus data as props to the corresponding View component
   render() {
+    if (this.state?.redirect) {
+      return <Redirect to="/campuses" />;
+    }
+
     return (
       <div>
         <Header />
         <CampusView
           campus={this.props.campus}
-          deleteCampus={this.props.deleteCampus}
+          deleteCampus={this.handleDelete}
         />
       </div>
     );
   }
+
+
 }
 
 // The following 2 input arguments are passed to the "connect" function used by "CampusContainer" component to connect to Redux Store.
@@ -49,6 +66,7 @@ const mapDispatch = (dispatch) => {
     deleteCampus: (id) => dispatch(deleteCampusThunk(id)),
   };
 };
+
 
 // Export store-connected container by default
 // CampusContainer uses "connect" function to connect to Redux Store and to read values from the Store
