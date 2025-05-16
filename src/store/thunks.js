@@ -152,3 +152,21 @@ export const fetchStudentThunk = id => async dispatch => {  // The THUNK
     console.error(err);
   }
 };
+
+export const unenrollStudentThunk = (studentId) => async (dispatch, getState) => {
+  try {
+    const student = getState().allStudents.find(s => s.id === studentId);
+    if (!student) throw new Error("Student not found");
+
+    const updatedStudent = { ...student, campusId: null };
+    const res = await axios.put(`/api/students/${studentId}`, updatedStudent);
+    dispatch(ac.editStudent(res.data));
+
+    // Optionally refresh the campus data
+    const campusId = getState().campus.id;
+    dispatch(fetchCampusThunk(campusId));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
