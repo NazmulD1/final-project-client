@@ -6,6 +6,7 @@ Depending on the Action object, the Reducer updates the State and return the new
 It also defines the State and its default initial value.
 ================================================== */
 import { FETCH_CAMPUS } from "../actions/actionTypes";  // Import Action Type
+import { DELETE_CAMPUS } from "../actions/actionTypes";  // Import Action Type
 
 // Define default Initial State
 const initialState = {
@@ -20,6 +21,13 @@ const campus = (state = initialState, action) => {  // Use "initialState" as def
     default:
       // If the Reducer doesn't recognize the Action Type, returns the previous (current) State unchanged.
       return state;
+    case DELETE_CAMPUS:
+    // If the deleted campus is currently selected, clear it
+    if (state.id === action.payload) {
+      return {};
+  }
+  return state;
+
   }
 };
 

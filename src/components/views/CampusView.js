@@ -10,13 +10,13 @@ import { Link } from "react-router-dom";
 const CampusView = (props) => {
   const { campus, deleteCampus } = props;
 
-  if (campus.students.length === 0) {
+  if (!campus || !campus.students || campus.students.length === 0) {
     return (
       <div>
         <h1>{campus.name}</h1>
         <h1>{campus.id}</h1>
 
-        <img src={campus.url} alt={campus.name} />
+        <img src={campus.imageUrl} alt={campus.name} />
 
         <p style={{ fontSize: "30px" }}>
           There are no students attending this school.
