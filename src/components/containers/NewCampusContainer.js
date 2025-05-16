@@ -40,16 +40,21 @@ class NewCampusContainer extends Component {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
     let campus = {
-        name: this.state.name,
-        address: this.state.address,
-        description: this.state.description,
-        imageUrl: this.state.imageUrl,
-        campusId: this.state.campusId
-
+      name: this.state.name,
+      address: this.state.address,
+      description: this.state.description,
+      imageUrl: this.state.imageUrl,
     };
+
     
     // Add new student in back-end database
     let newCampus = await this.props.addCampus(campus);
+
+    if (!newCampus) {
+      alert("Campus could not be created. Check form and try again.");
+      return;
+    }
+
 
     // Update state, and trigger redirect to show the new student
     this.setState({
