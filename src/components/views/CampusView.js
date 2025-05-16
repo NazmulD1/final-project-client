@@ -22,7 +22,7 @@ const CampusView = (props) => {
       <p><strong>Address:</strong> {campus.address}</p>
       <p><strong>Description:</strong> {campus.description}</p>
 
-      {campus.imageUrl && campus.imageUrl.trim() && (
+      {!hasStudents && campus.imageUrl && campus.imageUrl.trim() && (
         <img
           src={campus.imageUrl}
           alt="Campus"
@@ -33,6 +33,7 @@ const CampusView = (props) => {
           }}
         />
       )}
+
 
       {!hasStudents ? (
         <p style={{ fontSize: "30px" }}>
