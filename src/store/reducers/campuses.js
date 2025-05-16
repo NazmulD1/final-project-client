@@ -5,15 +5,18 @@ This is a Reducer function that accepts 2 parameters: the previous state object 
 Depending on the Action object, the Reducer updates the State and return the new State object.
 It also defines the State and its default initial value.
 ================================================== */
-import * as at from "../actions/actionTypes";  // Import Action Types ("at" keyword for Action Type)
+import * as at from "../actions/actionTypes";
 
-// REDUCER:
-const allCampuses = (state = [], action) => {  // Empty array as default Initial State
+const allCampuses = (state = [], action) => {
   switch (action.type) {
     case at.FETCH_ALL_CAMPUSES:
       return action.payload;
+
+    case at.DELETE_CAMPUS:
+      // ✅ Remove the deleted campus from state
+      return state.filter(campus => campus.id !== action.payload);
+
     default:
-      // If the Reducer doesn't recognize the Action Type, returns the previous (current) State unchanged.
       return state;
   }
 };

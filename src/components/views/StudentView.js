@@ -20,15 +20,18 @@ import { Link } from "react-router-dom";
 const StudentView = (props) => {
   const { student } = props;
 
-  // Render a single Student view
+  // Render a single Student view. Below, guard against the case when the student is not enrolled in a campus.
   return (
     <div>
       <h1>{student.firstname + " " + student.lastname}</h1>
+      {student.campus ? (
+        <Link to={`/campus/${student.campus.id}`}>
+          <h2>{student.campus.name}</h2>
+        </Link>
+      ) : (
+        <h2>This student is not enrolled in a campus</h2>
+      )} 
 
-      <Link to={`/campus/${student.campus.id}`}>
-        {" "}
-        <h2>{student.campus.name}</h2>{" "}
-      </Link>
 
       <Link to={`/student/${student.id}/edit`}>
         <button>Edit</button>
@@ -37,7 +40,7 @@ const StudentView = (props) => {
       <h3>GPA: {student.gpa}</h3>
       <h3>{student.email}</h3>
 
-      <img src={student.url} alt={student.name} />
+      <img src={student.imageUrl} alt={student.firstname} />
     </div>
   );
 };
